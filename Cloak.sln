@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloak.Runtime", "Cloak.Runtime\Cloak.Runtime.csproj", "{C20A6893-221D-44B4-BB2C-59B75B9824CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloak.Core", "Cloak.Core\Cloak.Core.csproj", "{00A33F6E-E06D-479C-9E91-2437D4AA65E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloak.Cli", "Cloak.Cli\Cloak.Cli.csproj", "{39F5A310-7F38-4D5B-BD28-62C85200B3EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C20A6893-221D-44B4-BB2C-59B75B9824CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C20A6893-221D-44B4-BB2C-59B75B9824CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C20A6893-221D-44B4-BB2C-59B75B9824CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C20A6893-221D-44B4-BB2C-59B75B9824CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A33F6E-E06D-479C-9E91-2437D4AA65E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A33F6E-E06D-479C-9E91-2437D4AA65E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A33F6E-E06D-479C-9E91-2437D4AA65E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A33F6E-E06D-479C-9E91-2437D4AA65E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F5A310-7F38-4D5B-BD28-62C85200B3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F5A310-7F38-4D5B-BD28-62C85200B3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F5A310-7F38-4D5B-BD28-62C85200B3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F5A310-7F38-4D5B-BD28-62C85200B3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
