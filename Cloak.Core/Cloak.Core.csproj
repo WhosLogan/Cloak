@@ -6,4 +6,16 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="AsmResolver.DotNet" Version="5.5.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cloak.Runtime\Cloak.Runtime.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Protections\" />
+    </ItemGroup>
+
 </Project>
