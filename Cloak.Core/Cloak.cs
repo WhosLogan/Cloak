@@ -1,5 +1,6 @@
 using System.Reflection;
 using AsmResolver.DotNet;
+using AsmResolver.DotNet.Builder;
 using Cloak.Core.Preprocessors;
 using Cloak.Core.Preprocessors.Impl;
 using Cloak.Core.Protections;
@@ -37,6 +38,6 @@ public sealed class Cloak(string file)
         }
         
         // Write the module to the target destination
-        Module.Write(outputDestination);
+        Module.Write(outputDestination, new ManagedPEImageBuilder(MetadataBuilderFlags.PreserveAll));
     }
 }
