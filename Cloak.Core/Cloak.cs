@@ -26,8 +26,13 @@ public sealed class Cloak(string file)
 
     public void Protect(string outputDestination)
     {
+        // Execute every preprocessor
         _preprocessors.ForEach(p => p.Execute(this));
+        
+        // Execute every enabled protection
         Protections.ForEach(p => p.Execute(this));
+        
+        // Write the module to the target destination
         Module.Write(outputDestination);
     }
 }
