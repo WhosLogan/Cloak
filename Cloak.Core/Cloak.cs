@@ -3,6 +3,7 @@ using AsmResolver.DotNet;
 using Cloak.Core.Preprocessors;
 using Cloak.Core.Preprocessors.Impl;
 using Cloak.Core.Protections;
+using Cloak.Core.Protections.Impl;
 
 namespace Cloak.Core;
 
@@ -19,6 +20,8 @@ public sealed class Cloak(string file)
 
     internal Dictionary<string, IMemberDescriptor> ClonedMembers { get; } = new();
     internal Dictionary<string, TypeDefinition> ClonedTypes { get; } = new();
+
+    internal Generator Generator { get; } = new();
 
     public List<Protection> Protections { get; } = [];
 
