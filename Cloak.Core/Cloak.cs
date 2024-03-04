@@ -8,6 +8,11 @@ namespace Cloak.Core;
 
 public sealed class Cloak(string file)
 {
+    private readonly List<IPreprocessor> _preprocessors =
+    [
+        new Cloner()
+    ];
+
     internal ModuleDefinition Module { get; } = ModuleDefinition.FromFile(file);
 
     internal ModuleDefinition RuntimeModule { get; } =
@@ -16,12 +21,8 @@ public sealed class Cloak(string file)
 
     internal Dictionary<string, IMemberDescriptor> ClonedMembers { get; } = new();
     internal Dictionary<string, TypeDefinition> ClonedTypes { get; } = new();
-    
-    public List<Protection> Protections { get; } = [];
 
-    private readonly List<IPreprocessor> _preprocessors = [
-        new Cloner()
-    ];
+    public List<Protection> Protections { get; } = [];
 
     public void Protect(string outputDestination)
     {

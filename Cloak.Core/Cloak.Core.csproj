@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AsmResolver.DotNet" Version="5.5.1" />
+        <PackageReference Include="AsmResolver.DotNet" Version="5.5.1"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Cloak.Runtime\Cloak.Runtime.csproj" />
+        <ProjectReference Include="..\Cloak.Runtime\Cloak.Runtime.csproj"/>
     </ItemGroup>
 
 </Project>

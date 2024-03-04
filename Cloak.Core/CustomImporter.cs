@@ -4,7 +4,8 @@ using AsmResolver.DotNet.Signatures;
 
 namespace Cloak.Core;
 
-internal class CustomImporter(MemberCloneContext memberCloneContext) : CloneContextAwareReferenceImporter(memberCloneContext)
+internal class CustomImporter(MemberCloneContext memberCloneContext)
+    : CloneContextAwareReferenceImporter(memberCloneContext)
 {
     private static readonly SignatureComparer Comparer = new();
 
@@ -14,10 +15,10 @@ internal class CustomImporter(MemberCloneContext memberCloneContext) : CloneCont
         // Check if the method is from a type defined in the System.Runtime.CompilerServices namespace.
         if (method.DeclaringType is not { Namespace.Value: "System.Runtime.CompilerServices" } type)
             return base.ImportMethod(method);
-        
+
         // We might already have a type and method defined in the target module (e.g., NullableAttribute::.ctor(int32)).
         // Try find it in the target module.
-        var existingMethod = this.Context.Module
+        var existingMethod = Context.Module
             .TopLevelTypes.FirstOrDefault(t => t.IsTypeOf(type.Namespace, type.Name))?
             .Methods.FirstOrDefault(m => method.Name == m.Name && Comparer.Equals(m.Signature, method.Signature));
 

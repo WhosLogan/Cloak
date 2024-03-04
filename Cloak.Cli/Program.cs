@@ -21,6 +21,7 @@ internal static class Program
 
             protection.Enabled = answer == "y";
         }
+
         Console.Write("Enter target output path: ");
         var target = Console.ReadLine()!;
         cloak.Protect(target);
