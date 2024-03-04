@@ -1,4 +1,4 @@
-namespace Cloak.Core;
+namespace Cloak.Core.Protections;
 
 public abstract class Protection(string name, string description)
 {

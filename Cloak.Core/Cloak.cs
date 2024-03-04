@@ -1,5 +1,6 @@
 using System.Reflection;
 using AsmResolver.DotNet;
+using Cloak.Core.Protections;
 
 namespace Cloak.Core;
 
@@ -11,6 +12,8 @@ public sealed class Cloak(string file)
         ModuleDefinition.FromModule(Assembly.GetCallingAssembly().GetModule("Cloak.Runtime") ??
                                     throw new DllNotFoundException("Runtime module not found"));
 
+    internal Dictionary<string, IMemberDefinition> ClonedMembers { get; } = new();
+    
     public List<Protection> Protections { get; } = [];
 
     public void Protect(string outputDestination)

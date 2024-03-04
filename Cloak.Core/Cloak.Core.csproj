@@ -14,8 +14,4 @@
       <ProjectReference Include="..\Cloak.Runtime\Cloak.Runtime.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Protections\" />
-    </ItemGroup>
-
 </Project>
