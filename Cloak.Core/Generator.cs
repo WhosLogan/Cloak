@@ -8,7 +8,7 @@ internal sealed class Generator
     internal int GenerateInt()
     {
         start:
-        var i = _random.Next(1000000000, 999999999);
+        var i = _random.Next();
         if (_alreadyGeneratedInts.Contains(i)) goto start;
         _alreadyGeneratedInts.Add(i);
         return i;
