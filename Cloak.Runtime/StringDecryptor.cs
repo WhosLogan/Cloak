@@ -24,18 +24,18 @@ public static class StringDecryptor
         }
         
         // Get the total string count and remove it from the buffer
-        var strCount = BitConverter.ToInt32(encryptedData.GetRange(0, sizeof(int)).ToArray());
+        var strCount = BitConverter.ToInt32(encryptedData.GetRange(0, sizeof(int)).ToArray(), 0);
         encryptedData.RemoveRange(0, sizeof(int));
 
         // Add all encrypted strings to the dictionary
         for (var i = 0; i < strCount; i++)
         {
             // Get the key and remove it from the encrypted data
-            var key = BitConverter.ToInt32(encryptedData.GetRange(0, sizeof(int)).ToArray());
+            var key = BitConverter.ToInt32(encryptedData.GetRange(0, sizeof(int)).ToArray(), 0);
             encryptedData.RemoveRange(0, sizeof(int));
 
             // Get the size and remove it from the encrypted data
-            var size = BitConverter.ToInt32(encryptedData.GetRange(0, sizeof(int)).ToArray());
+            var size = BitConverter.ToInt32(encryptedData.GetRange(0, sizeof(int)).ToArray(), 0);
             encryptedData.RemoveRange(0, sizeof(int));
             
             // Get the encrypted string and remove it from the encrypted data
