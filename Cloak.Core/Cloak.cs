@@ -24,7 +24,9 @@ public sealed class Cloak(string file)
 
     internal Generator Generator { get; } = new();
 
-    public List<Protection> Protections { get; } = [];
+    public List<Protection> Protections { get; } = [
+        new StringEncryption()
+    ];
 
     public void Protect(string outputDestination)
     {
