@@ -11,7 +11,7 @@ internal class Cloner : IPreprocessor
         
         // Include every type from the runtime module that has a reference in any protection
         foreach (var type in cloak.RuntimeModule.GetAllTypes().Where(t =>
-                     t.Name is not null && cloak.Protections.Any(p => p.RequiredTypes.Contains(t.Name))))
+                     t.Name is not null && cloak.Protections.Any(p => p.Enabled && p.RequiredTypes.Contains(t.Name))))
             cloner.Include(type);
 
         // Clone the types
