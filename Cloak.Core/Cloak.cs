@@ -11,7 +11,8 @@ public sealed class Cloak(string file)
 {
     private readonly List<Processor> _processors =
     [
-        new Cloner()
+        new Cloner(),
+        new RuntimeRenamer()
     ];
 
     internal ModuleDefinition Module { get; } = ModuleDefinition.FromFile(file);
