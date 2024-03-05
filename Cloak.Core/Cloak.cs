@@ -1,8 +1,7 @@
-using System.Reflection;
 using AsmResolver.DotNet;
 using AsmResolver.DotNet.Builder;
-using Cloak.Core.Preprocessors;
-using Cloak.Core.Preprocessors.Impl;
+using Cloak.Core.Processors;
+using Cloak.Core.Processors.Impl;
 using Cloak.Core.Protections;
 using Cloak.Core.Protections.Impl;
 
@@ -10,7 +9,7 @@ namespace Cloak.Core;
 
 public sealed class Cloak(string file)
 {
-    private readonly List<IPreprocessor> _preprocessors =
+    private readonly List<IProcessor> _processors =
     [
         new Cloner()
     ];
@@ -32,7 +31,7 @@ public sealed class Cloak(string file)
     public void Protect(string outputDestination)
     {
         // Execute every preprocessor
-        _preprocessors.ForEach(p => p.Execute(this));
+        _processors.ForEach(p => p.Execute(this));
         
         // Execute every enabled protection
         foreach (var protection in Protections.Where(p => p.Enabled))

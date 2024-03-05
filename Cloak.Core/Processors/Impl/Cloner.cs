@@ -1,8 +1,8 @@
 using AsmResolver.DotNet.Cloning;
 
-namespace Cloak.Core.Preprocessors.Impl;
+namespace Cloak.Core.Processors.Impl;
 
-internal class Cloner : IPreprocessor
+internal class Cloner : IProcessor
 {
     public void Execute(Cloak cloak)
     {
