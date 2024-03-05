@@ -7,7 +7,7 @@ more of a learning tool than a good obfuscator, but it can double as both :smile
 - [ ] Control Flow
 - [ ] Call Proxying
 - [ ] Renaming
-- [ ] Int Encryption
+- [X] Int Encryption
 
 ## TODO
 - [ ] Add a settings system to the protections
