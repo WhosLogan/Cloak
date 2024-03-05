@@ -20,11 +20,14 @@ internal class Cloner : Processor
         // Add cloned types to the module and the Cloak context
         foreach (var type in result.ClonedTopLevelTypes)
         {
+            // Add the type to the context's cloned types
             cloak.ClonedTypes.Add($"{type.Namespace}.{type.Name}", type);
+            
+            // Add the type to the module
             cloak.Module.TopLevelTypes.Add(type);
         }
 
-        // Add cloned methods to the Cloak context
+        // Add cloned members to the Cloak context
         foreach (var member in result.ClonedMembers)
         {
             if (member.DeclaringType == null) continue;
