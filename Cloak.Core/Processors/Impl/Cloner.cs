@@ -2,9 +2,9 @@ using AsmResolver.DotNet.Cloning;
 
 namespace Cloak.Core.Processors.Impl;
 
-internal class Cloner : IProcessor
+internal class Cloner : Processor
 {
-    public void Execute(Cloak cloak)
+    internal override void PreProcess(Cloak cloak)
     {
         // Create a cloner with our custom importer
         var cloner = new MemberCloner(cloak.Module, ctx => new CustomImporter(ctx));

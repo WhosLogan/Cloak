@@ -9,7 +9,7 @@ namespace Cloak.Core;
 
 public sealed class Cloak(string file)
 {
-    private readonly List<IProcessor> _processors =
+    private readonly List<Processor> _processors =
     [
         new Cloner()
     ];
@@ -31,13 +31,16 @@ public sealed class Cloak(string file)
     public void Protect(string outputDestination)
     {
         // Execute every preprocessor
-        _processors.ForEach(p => p.Execute(this));
+        _processors.ForEach(p => p.PreProcess(this));
         
         // Execute every enabled protection
         foreach (var protection in Protections.Where(p => p.Enabled))
         {
             protection.Execute(this);
         }
+        
+        // Execute every postprocessor
+        _processors.ForEach(p => p.PostProcess(this));
         
         // Write the module to the target destination
         Module.Write(outputDestination, new ManagedPEImageBuilder(MetadataBuilderFlags.PreserveAll));
