@@ -22,6 +22,7 @@ internal static class ControlFlowBlockParser
         {
             instructions.AddRange(node.Contents.Instructions);
             if (!node.Contents.Footer.IsConditionalBranch() && !node.Contents.Footer.IsUnconditionalBranch()) continue;
+            if (node.GetParentExceptionHandler() != null) continue;
             blocks.Add(new ControlFlowBlock([..instructions], blocks.Count, generator.GenerateInt()));
             instructions.Clear();
         }
