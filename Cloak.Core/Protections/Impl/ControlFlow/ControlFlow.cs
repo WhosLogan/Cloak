@@ -1,6 +1,5 @@
 using AsmResolver.DotNet.Code.Cil;
 using AsmResolver.PE.DotNet.Cil;
-using Echo.Platforms.AsmResolver;
 
 namespace Cloak.Core.Protections.Impl.ControlFlow;
 
@@ -12,13 +11,10 @@ public class ControlFlow() : Protection("Control Flow", "Mangles the control flo
         {
             foreach (var method in type.Methods.Where(m => m.CilMethodBody is not null))
             {
-                // Construct a control flow graph and turn it into randomized blocks based off of the nodes
-                var cfg = method.CilMethodBody!.ConstructStaticFlowGraph();
-                var random = new Random();
-                var blocks = cfg.Nodes.Select((t, i) => 
-                    new ControlFlowBlock(t, i, cloak.Generator.GenerateInt())).OrderBy(_ => random.Next()).ToList();
+                // Parse control flow blocks from the method
+                var blocks = ControlFlowBlockParser.ParseMethod(method, cloak.Generator, true);
                 
-                // Clear the current instructions from the method
+                // Clear the method body
                 method.CilMethodBody!.Instructions.Clear();
                 
                 // Create and assign a local with the first blocks key
@@ -37,12 +33,6 @@ public class ControlFlow() : Protection("Control Flow", "Mangles the control flo
                 // Random end value
                 var endKey = cloak.Generator.GenerateInt();
                 
-                // Might wanna come back to this, I feel like it's needed
-                // method.CilMethodBody.Instructions.Add(CilOpCodes.Ldloc, controlLocal);
-                // method.CilMethodBody.Instructions.Add(CilOpCodes.Ldc_I4, endKey);
-                // method.CilMethodBody.Instructions.Add(CilOpCodes.Ceq);
-                // method.CilMethodBody.Instructions.Add(CilOpCodes.Brtrue, retLabel);
-                
                 // Add blocks in
                 foreach (var block in blocks)
                 {
@@ -54,7 +44,7 @@ public class ControlFlow() : Protection("Control Flow", "Mangles the control flo
                     method.CilMethodBody.Instructions.Add(CilOpCodes.Brfalse, endLabel);
                     
                     // Insert the instructions
-                    method.CilMethodBody.Instructions.AddRange(block.ControlFlowNode.Contents.Instructions);
+                    method.CilMethodBody.Instructions.AddRange(block.Instructions);
                     
                     // Set the key to the next block
                     var nextBlock = blocks.FirstOrDefault(b => b.Sequence == block.Sequence + 1);

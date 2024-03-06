@@ -3,9 +3,9 @@ using Echo.ControlFlow;
 
 namespace Cloak.Core.Protections.Impl.ControlFlow;
 
-internal class ControlFlowBlock(ControlFlowNode<CilInstruction> node, int sequence, int key)
+internal class ControlFlowBlock(IEnumerable<CilInstruction> instructions, int sequence, int key)
 {
-    internal ControlFlowNode<CilInstruction> ControlFlowNode { get; } = node;
+    internal IEnumerable<CilInstruction> Instructions { get; } = instructions;
     internal int Sequence { get; } = sequence;
     internal int Key { get; } = key;
 }
