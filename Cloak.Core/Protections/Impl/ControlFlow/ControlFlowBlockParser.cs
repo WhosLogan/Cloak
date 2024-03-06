@@ -1,5 +1,3 @@
-
-
 using AsmResolver.DotNet;
 using AsmResolver.PE.DotNet.Cil;
 using Echo.Platforms.AsmResolver;
