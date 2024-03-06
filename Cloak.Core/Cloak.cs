@@ -1,9 +1,11 @@
+using AsmResolver;
 using AsmResolver.DotNet;
 using AsmResolver.DotNet.Builder;
 using Cloak.Core.Processors;
 using Cloak.Core.Processors.Impl;
 using Cloak.Core.Protections;
 using Cloak.Core.Protections.Impl;
+using Cloak.Core.Protections.Impl.ControlFlow;
 
 namespace Cloak.Core;
 
@@ -26,6 +28,7 @@ public sealed class Cloak(string file)
 
     public List<Protection> Protections { get; } = [
         new StringEncryption(),
+        new ControlFlow(),
         new IntEncryption()
     ];
 
