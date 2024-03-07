@@ -9,7 +9,7 @@ using Cloak.Core.Protections.Impl.ControlFlow;
 
 namespace Cloak.Core;
 
-public sealed class Cloak(string file)
+public sealed class Cloak()
 {
     private readonly List<Processor> _processors =
     [
@@ -17,7 +17,7 @@ public sealed class Cloak(string file)
         new RuntimeRenamer()
     ];
 
-    internal ModuleDefinition Module { get; } = ModuleDefinition.FromFile(file);
+    internal ModuleDefinition Module { get; private set; } = null!;
 
     internal ModuleDefinition RuntimeModule { get; } = ModuleDefinition.FromFile("Cloak.Runtime.dll");
 
@@ -32,8 +32,11 @@ public sealed class Cloak(string file)
         new IntEncryption()
     ];
 
-    public void Protect(string outputDestination)
+    public void Protect(string inputFile, string outputDestination)
     {
+        // Load the input file
+        Module = ModuleDefinition.FromFile(inputFile);
+        
         // Execute every preprocessor
         _processors.ForEach(p => p.PreProcess(this));
         

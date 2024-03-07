@@ -18,7 +18,7 @@ internal static class Program
         }
         
         // New instance of Cloak
-        var cloak = new Core.Cloak(file);
+        var cloak = new Core.Cloak();
         
         // Enable protections
         foreach (var protection in cloak.Protections)
@@ -45,7 +45,7 @@ internal static class Program
         }
         
         // Protect the file
-        cloak.Protect(target);
+        cloak.Protect(file, target);
         
         // Output a message to signal protection is done
         Console.WriteLine("Target successfully protected, press any key to exit");
