@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="400"
+        x:Class="Cloak.Gui.MainWindow"
+        Title="Cloak.Gui"
+        Background="#1f1f1f">
+    <Canvas>
+        <ListBox Name="Protections" Canvas.Top="30" Width="250" Canvas.Left="50" SelectionMode="Multiple,Toggle"></ListBox>
+        <TextBox Name="InputBox" Watermark="Input File" Canvas.Bottom="100" Canvas.Left="50" Width="250"></TextBox>
+        <TextBox Name="OutputBox" Watermark="Output File" Canvas.Bottom="60" Canvas.Left="50" Width="250"></TextBox>
+        <Button Name="ProtectButton" Background="DarkSlateBlue" Click="ProtectButtonClick" 
+                Canvas.Bottom="20" Canvas.Left="37.5"
+                Width="275" HorizontalContentAlignment="Center">Protect</Button>
+    </Canvas>
+</Window>

@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloak.Core", "Cloak.Core\Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloak.Cli", "Cloak.Cli\Cloak.Cli.csproj", "{39F5A310-7F38-4D5B-BD28-62C85200B3EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloak.Gui", "Cloak.Gui\Cloak.Gui.csproj", "{445FD25B-2B43-4F7C-B553-2FD194882B92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{39F5A310-7F38-4D5B-BD28-62C85200B3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39F5A310-7F38-4D5B-BD28-62C85200B3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39F5A310-7F38-4D5B-BD28-62C85200B3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{445FD25B-2B43-4F7C-B553-2FD194882B92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{445FD25B-2B43-4F7C-B553-2FD194882B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{445FD25B-2B43-4F7C-B553-2FD194882B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{445FD25B-2B43-4F7C-B553-2FD194882B92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
