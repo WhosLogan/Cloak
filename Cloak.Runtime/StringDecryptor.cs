@@ -50,7 +50,11 @@ public static class StringDecryptor
     public static string DecryptString(int key)
     {
         // Get the encrypted string from the dictionary
-        var str = EncryptedStrings[key];
+        var encStr = EncryptedStrings[key];
+        
+        // Copy the encrypted string to a new array
+        var str = new byte[encStr.Length];
+        Array.Copy(encStr, str, encStr.Length);
         
         // Get the metadata token from the stacktrace
         var mdToken = new StackTrace().GetFrame(1)!.GetMethod()!.MetadataToken;
@@ -62,6 +66,6 @@ public static class StringDecryptor
         }
 
         // Return the encrypted string
-        return Encoding.Default.GetString(str);
+        return Encoding.Unicode.GetString(str);
     }
 }

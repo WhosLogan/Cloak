@@ -65,7 +65,7 @@ public class StringEncryption() : Protection("String Encryption", "Encrypts all 
     private static byte[] EncryptString(string str, int key, int mdToken)
     {
         // Get the bytes of the string
-        var decoded = Encoding.Default.GetBytes(str);
+        var decoded = Encoding.Unicode.GetBytes(str);
         
         for (var i = 0; i < decoded.Length; i++)
         {
