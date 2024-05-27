@@ -1,4 +1,5 @@
 using AsmResolver.DotNet;
+using AsmResolver.DotNet.Code.Cil;
 using AsmResolver.PE.DotNet.Cil;
 using Echo.Platforms.AsmResolver;
 
@@ -23,6 +24,8 @@ internal static class ControlFlowBlockParser
             instructions.AddRange(node.Contents.Instructions);
             if (!node.Contents.Footer.IsConditionalBranch() && !node.Contents.Footer.IsUnconditionalBranch()) continue;
             if (node.GetParentExceptionHandler() != null) continue;
+            if (node.Contents.Footer.GetStackPushCount() -
+                node.Contents.Footer.GetStackPopCount(method.CilMethodBody) != 0) continue;
             blocks.Add(new ControlFlowBlock([..instructions], blocks.Count, generator.GenerateInt()));
             instructions.Clear();
         }
