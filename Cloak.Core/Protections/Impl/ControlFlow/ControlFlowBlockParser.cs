@@ -17,20 +17,27 @@ internal static class ControlFlowBlockParser
 
         // Instruction list
         var instructions = new List<CilInstruction>();
+        
+        // The current stack count
+        var stackCount = 0;
 
         // Iterate through all nodes, adding blocks on all branches
         foreach (var node in cfg.Nodes)
         {
-            instructions.AddRange(node.Contents.Instructions);
+            foreach (var instruction in node.Contents.Instructions)
+            {
+                stackCount += instruction.GetStackPushCount();
+                stackCount -= instruction.GetStackPopCount(method.CilMethodBody);
+                instructions.Add(instruction);
+            }
             if (!node.Contents.Footer.IsConditionalBranch() && !node.Contents.Footer.IsUnconditionalBranch()) continue;
             if (node.GetParentExceptionHandler() != null) continue;
-            if (node.Contents.Footer.GetStackPushCount() -
-                node.Contents.Footer.GetStackPopCount(method.CilMethodBody) != 0) continue;
+            if (stackCount != 0) continue;
             blocks.Add(new ControlFlowBlock([..instructions], blocks.Count, generator.GenerateInt()));
             instructions.Clear();
         }
 
-        // Add any left over instructions to the blocks
+        // Add any leftover instructions to the blocks
         if (instructions.Count != 0)
         {
             blocks.Add(new ControlFlowBlock([..instructions], blocks.Count, generator.GenerateInt()));
