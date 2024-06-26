@@ -11,9 +11,9 @@ more of a learning tool than a good obfuscator, but it can double as both :smile
 
 ## TODO
 - [ ] Add a settings system to the protections
-- [ ] Make a graphical interface
-- [ ] Incorporate GitHub Actions for automatic builds
-- [ ] Test and improve control flow, it hasn't had testing and may break large functions
+- [X] Make a graphical interface
+- [X] Incorporate GitHub Actions for automatic builds
+- [X] Test and improve control flow, it hasn't had testing and may break large functions
 - [ ] Thoroughly test the obfuscator as a whole
 
 ## Project Structure
