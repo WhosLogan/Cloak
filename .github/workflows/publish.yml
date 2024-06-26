@@ -20,15 +20,20 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet publish --no-restore
-      - name: Compress Binaries
+      - name: Compress Cli
         uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r Cloak.Cli.zip ./Cloak.Cli/bin/Release/net8.0/publish && zip -qq -r Cloak.Gui.zip ./Cloak.Gui/bin/Release/net8.0/publish
+          args: zip -qq -r Cloak.Cli.zip ./Cloak.Cli/bin/Release/net8.0/publish
+      - name: Compress Gui
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r Cloak.Gui.zip ./Cloak.Gui/bin/Release/net8.0/publish
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           name: Release ${{  github.ref_name }}
           body: Automated build by Github Actions
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           files: |
             Cloak.Cli.zip
             Cloak.Gui.zip
